@@ -1,0 +1,18 @@
+{% block start_tag %}
+<a
+{% endblock %}
+    {% block attributes %}
+        href="#"
+        class="{% block class %}ibrowsXeditable{% endblock %}"
+        data-xeditable
+        {% for key, value in attributes %}
+            {{ key }}="{{ value }}"
+        {% endfor %}
+    {% endblock %}
+>
+{% block value %}
+    {{ value }}
+{% endblock %}
+{% block end_tag %}
+</a>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% block start %}
+<ul class="{{ path }} inputCollection" data-xeditable-replace="{{ path }}" data-xeditable-replace-callback="reinitXeditable">
+    {% block start_collection %}
+        {% for formtype, viewParameter in viewParameters %}
+            {% if 'create' in formtype %}
+                {% block create %}
+                    <li  class="new"  >
+                        <a
+                                href="#"
+                                class="new ibrowsXeditable"
+                                data-xeditable
+                                {% for key, value in viewParameter.attributes %}{{ key }}="{{ value }}"{% endfor %}
+                                >
+                            {% block create_value %}
+                                <i class="fa fa-plus"></i> {{ 'add'|trans }}
+                            {% endblock %}
+                        </a>
+                    </li>
+                {% endblock %}
+            {% elseif 'delete' in formtype %}
+                {% block delete %}
+                    <li class="remove">
+                    <a
+                            href="#"
+                            class="remove ibrowsXeditable"
+                            data-xeditable
+                            {% for key, value in viewParameter.attributes %}{{ key }}="{{ value }}"{% endfor %}
+                            >
+                    {% block delete_value %}
+                        <i class="fa fa-times"></i> {{ 'remove'|trans }}
+                    {% endblock %}
+                    </a>
+                    </li>
+                {% endblock %}
+            {% else %}
+                {% block edit %}
+                    <li  >
+                        <a
+                                href="#"
+                                class="ibrowsXeditable"
+                                data-xeditable
+                                {% for key, value in viewParameter.attributes %}{{ key }}="{{ value }}"{% endfor %}
+                                >
+                            {% block edit_value %}
+                                 <span class="value">{{ viewParameter.value }}</span>
+                            {% endblock %}
+                        </a>
+                    </li>
+                {% endblock %}
+            {% endif %}
+
+        {% endfor %}
+    {% endblock %}
+</ul>
+{% endblock %}

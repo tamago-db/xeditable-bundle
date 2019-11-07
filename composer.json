@@ -1,0 +1,21 @@
+{
+    "name": "ibrows/xeditable-bundle",
+    "type": "symfony-bundle",
+    "description": "bootstrap x-editable symfony2 forms integration",
+    "keywords": ["XeditableBundle", "bootstrap", "inline-edit", "x-editable", "symfony2", "form"],
+    "homepage": "http://www.ibrows.ch",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Steiner",
+            "homepage": "https://github.com/ibrows"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "symfony/symfony": "~3.0"
+    },
+    "autoload": {
+        "psr-4": { "Ibrows\\XeditableBundle\\": "" }
+    }
+}

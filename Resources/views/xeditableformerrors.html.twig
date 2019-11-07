@@ -1,0 +1,16 @@
+{% spaceless %}
+    {% import _self as printer %}
+    {{ printer.printError(form) }}
+{% endspaceless %}
+
+{% macro printError(form) %}
+    {% import _self as printer %}
+    {% spaceless %}
+        {% for error in form.vars.errors|default([]) %}
+            <div class="xeditable-error">{{ form_label(form) }}: {{ error.message }}</div>
+        {% endfor %}
+        {% for subform in form %}
+            {{ printer.printError(subform) }}
+        {% endfor %}
+    {% endspaceless %}
+{% endmacro %}
